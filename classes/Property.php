@@ -42,9 +42,9 @@ class Property {
 		if(isset($params['modifiedDate'])) {
 			$modifiedDate = explode('-', $params['modifiedDate']);
 			
-			if(count($modifiedDate == 3) {
+			if(count($modifiedDate == 3)) {
 				list($y, $m, $d) = $modifiedDate;
-				this->modifiedDate = mktime(0, 0, 0, $m, $d, $y);
+				$this->modifiedDate = mktime(0, 0, 0, $m, $d, $y);
 			}
 		}
 	}
@@ -138,7 +138,6 @@ class Property {
 		$st->execute();
 		$conn = null;
 	
-	
-		
-	
-		
+	}
+}
+?>

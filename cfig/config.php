@@ -11,7 +11,7 @@ define("HOMEPAGE_NUM_PROPERTIES", 4); //Number of properties to be shown on the 
 define("TEMPLATE_PATH", "templates"); // Directory to the page templates.
 define("IMAGE_PATH", "images/media"); // Directory to the images displayed.
 
-//require(CLASS_PATH . "/property.php"); 
+require(CLASS_PATH . "/Property.php"); 
 
 function handleException($exception) {
 	echo "Whoops! An error occured. Please get in touch!";
