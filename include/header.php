@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8>
+    <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
     <meta content="CHF Estate Agents" name="description" />
     <meta content="estate, agent, chf, homepage" name="keywords" />
     <meta content="Curle" name="author" />
     <meta content="#ffffff" name="theme-color" />
-    <title><?php echo htmlspecialchars($results['pageTitle'])?></title>
+    <title><?=$results['pageTitle'];?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css">
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/main.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/main.css">
 	
 	<script src="https://use.fontawesome.com/efab83f16e.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -33,22 +34,22 @@
 					- Move with the times</div>
 				<div class="col-lg-3 col-md-4 h5 my-3 m-md-0">
 					<i class="fa fa-envelope brand-text" aria-hidden="true"></i>
-					<span>sales@chf.uk.com</span>
+					<span><?=SITECONST['email']; ?></span>
 				</div>
 				<div class="col-lg-3 col-md-4 h5 mb-0">
 					<i class="fa fa-phone brand-text" aria-hidden="true"></i>
-					<span>(01633) 881 844</span>
+					<span><?= SITECONST['phone']; ?></span>
 				</div>
 			</div>
 		</div>
 	</div>
-	<?php if(isset($_GET['action'])) { ?>
+	<?php if(!empty($results['msg'])) { ?>
     <div class="container py-2 top-msg">
-		<div class="alert <?php if(!$_GET['msg_status']) {echo "alert-success"} else {echo "alert-"} echo $_GET['msg_status']; ?> alert-dismissible fade show" role="alert">
+		<div class="alert <?php if(!$_GET['msg_status']) {echo "alert-success";} else {echo "alert-";} echo $_GET['msg_status']; ?> alert-dismissible fade show" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-		  <?php //echo htmlspecialchars($msg) ?>
+		  <?php //echo htmlspecialchars($results['msg']) ?>
         </div>
     </div>
 	<?php } ?>
@@ -56,7 +57,7 @@
 		<div class="row">
 			<div class="col-md-3 text-center text-md-left">
 				<a href="/">
-					<img src="media/img/logo.png" alt="">
+					<img src="static/images/logo.png" alt="">
 				</a>
 			</div>
 			<div class="col-md-9">
@@ -72,13 +73,13 @@
 					<div class="col-12">
 						<ul class="nav nav-pills justify-content-md-end justify-content-center">
 							<li class="nav-item">
-								<a class="nav-link <?php if($_SERVER['REQUEST_URI'] == "/index.php/") {echo "active"} ?>" href="index.php">Home</a>
+								<a class="nav-link <?php if($_SERVER['REQUEST_URI'] == "/index.php/") {echo "active";} ?>" href="index.php">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link <?php if($_SERVER['REQUEST_URI'] == "/properties.php") {echo "active"} ?>" href="/index.php?action=properties">For sale</a>
+								<a class="nav-link <?php if($_SERVER['REQUEST_URI'] == "/properties.php") {echo "active";} ?>" href="properties.php">For sale</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link {% if request.path == "/contact/" %}active{% endif %}" href="{% url 'contact' %}">Get in touch</a>
+								<a class="nav-link <?php if($_SERVER['REQUEST_URI'] == "/index.php?action=contact") {echo "active";} ?>" href="index.php?action=contact">Get in touch</a>
 							</li>
 						</ul>
 					</div>
